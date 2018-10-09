@@ -1,7 +1,7 @@
 package crypto;
 public class secureUtils {
 
-    //Function from demo.java file provided used for output.
+    //Functions from demo.java file provided, used for output.
     /*
  * Converts a byte array to hex string
  * this code from http://java.sun.com/j2se/1.4.2/docs/guide/security/jce/JCERefGuide.html#HmacEx

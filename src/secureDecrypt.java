@@ -16,7 +16,7 @@ public class secureDecrypt {
         FileInputStream in_file;
         FileOutputStream out_file;
         try {
-            //get ciphertext
+            //get cipher text from file
             in_file = new FileInputStream(args[0]);
             byte[] cipherTextAndIV = new byte[in_file.available()];
             in_file.read(cipherTextAndIV);
@@ -41,7 +41,7 @@ public class secureDecrypt {
             byte[] cipherText = Arrays.copyOfRange(cipherTextAndIV,0,cipherTextAndIV.length - 16);
 
             //Do decryption
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding");
             cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, ivParameterSpec);
             byte[] decryptedMessage = cipher.doFinal(cipherText);
 
@@ -70,7 +70,7 @@ public class secureDecrypt {
             out_file.close();
             System.out.println("Decryption Finished.");
         }catch (Exception except){
-            System.err.println(except);
+            except.printStackTrace();
         }
     }
 }
