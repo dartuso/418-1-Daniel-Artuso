@@ -3,20 +3,23 @@ package crypto;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
+import java.security.spec.KeySpec;
 
 import static crypto.secureUtils.*;
 
 public class secureEncrypt {
     public static void main(String args[]) throws Exception{
-        FileInputStream in_file = null;
-        FileOutputStream out_file = null;
+        FileInputStream in_file;
+        FileOutputStream out_file;
 
         try {
             //read file into byte array
@@ -62,12 +65,18 @@ public class secureEncrypt {
             cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, ivParameterSpec);
             byte[] encrypted = cipher.doFinal(messagePlusDigest);
 
+            //Combine IV vectors for decryption
+            outputStream.reset();
+            outputStream.write(encrypted);
+            outputStream.write(initvector);
+            byte[] encryptedandIV = outputStream.toByteArray();
+
             out_file = new FileOutputStream(args[1]);
-            out_file.write(encrypted);
+            out_file.write(encryptedandIV);
             out_file.close();
             System.out.println("Encryption Finished.");
         }catch (Exception except){
-            System.out.println(except);
+            System.err.println(except);
         }
     }
 }
