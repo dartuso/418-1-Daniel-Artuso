@@ -41,7 +41,7 @@ public class secureDecrypt {
             byte[] cipherText = Arrays.copyOfRange(cipherTextAndIV,0,cipherTextAndIV.length - 16);
 
             //Do decryption
-            Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding");
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, ivParameterSpec);
             byte[] decryptedMessage = cipher.doFinal(cipherText);
 

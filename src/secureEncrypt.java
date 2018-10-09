@@ -56,7 +56,7 @@ public class secureEncrypt {
             IvParameterSpec ivParameterSpec = new IvParameterSpec(initvector);
 
             //Encrypting
-            Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding");
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, ivParameterSpec);
             byte[] encrypted = cipher.doFinal(messagePlusDigest);
 
