@@ -50,6 +50,7 @@ public class secureEncrypt {
             keyGenerator.init(128,secureRandom);
             SecretKey secretKey = keyGenerator.generateKey();
 
+            //Get key spec
             byte[] rawKey = secretKey.getEncoded();
             SecretKeySpec secretKeySpec = new SecretKeySpec(rawKey, "AES");
 
