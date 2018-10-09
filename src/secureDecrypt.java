@@ -1,5 +1,3 @@
-package crypto;
-
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -9,7 +7,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
-
 import java.util.Arrays;
 import static crypto.secureUtils.toHexString;
 
