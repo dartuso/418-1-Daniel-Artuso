@@ -10,7 +10,7 @@ import java.security.MessageDigest;
 import java.security.SecureRandom;
 import static crypto.secureUtils.toHexString;
 
-public class secureEncrypt {
+public class decryptFile {
     public static void main(String args[]) throws Exception{
         FileInputStream in_file;
         FileOutputStream out_file;
