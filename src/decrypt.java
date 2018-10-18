@@ -1,3 +1,6 @@
+/*Daniel Artuso
+* 30029826
+* */
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -10,7 +13,7 @@ import java.security.SecureRandom;
 import java.util.Arrays;
 import static crypto.secureUtils.toHexString;
 
-public class secureFile {
+public class decrypt {
 
     public static void main(String args[]){
         FileInputStream in_file;
